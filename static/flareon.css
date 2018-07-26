@@ -1,0 +1,66 @@
+@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+@import url('https://fonts.googleapis.com/css?family=Roboto|Play|Orbitron');
+
+body {
+    font-size: 16px;
+    font-family: "Roboto", "Jeju Gothic";
+}
+
+input {
+    border: 0px;
+    border-bottom: 1px solid #ddd;
+}
+
+input:focus {
+    outline: none;
+    border: 0px;
+    border-bottom: 1px solid #bbb;
+}
+
+#flareon-container {
+    padding: 20px;
+}
+
+.flareon-title {
+    font-size: 30px;
+    font-family: "Orbitron";
+    text-transform: capitalize;
+    text-align: center;
+    padding: 20px 0 50px 0;
+}
+
+.metadata-holder {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 16px;
+    color: #444;
+}
+
+.metadata-holder .metadata {
+    margin-bottom: 10px;
+}
+
+.metadata-holder .attr {
+    font-weight: bold;
+    padding-right: 20px;
+}
+
+.metadata-holder #title-value {
+    width: 200px;
+}
+
+.metadata-holder #year-value {
+    width: 40px;
+}
+
+.metadata-holder #month-value {
+    width: 20px;
+}
+
+.metadata-holder #day-value {
+    width: 20px;
+}
+
+.metadata-holder #weekday-value {
+    padding-left: 10px;
+}

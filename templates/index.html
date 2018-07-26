@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flareon - Netlify Text Editor</title>
+    <!-- Load Editor.md -->
+    <link rel="stylesheet" type="text/css" href="/static/simplemde.min.css">
+    <script type="text/javascript" src="/static/simplemde.min.js"></script>
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="/static/jquery-3.3.1.min.js"></script>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="/static/bootstrap.min.css">
+    <script type="text/javascript" src="/static/bootstrap.min.js"></script>
+
+    <!-- Custom CSS and JS -->
+    <link rel="stylesheet" type="text/css" href="/static/flareon.css">
+    <script type="text/javascript" src="/static/flareon.js"></script>
+
+
+</head>
+<body>
+    <div id="flareon-container">
+        <div class="row">
+                
+            <div class="col-sm-12">
+                <div class="flareon-title">
+                    <b>Flareon</b> - Jekyll blog article editor
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-8">
+                <textarea id="Editor"></textarea>
+            </div>
+            <div class="col-sm-4">
+                <div class="metadata-holder">
+                    <div class="row">
+                        <div class="col-sm-12 metadata">
+                            <span class="attr">Title: </span>
+                            <input id="title-value" />
+                        </div>
+                        <div class="col-sm-12 metadata">
+                            <span class="attr">Date: </span>
+                            <input maxlength="4" id="year-value" />&nbsp;&nbsp;-&nbsp;&nbsp;
+                            <input maxlength="2" id="month-value" />&nbsp;&nbsp;-&nbsp;&nbsp;
+                            <input maxlength="2" id="day-value" />
+                            <span id="weekday-value"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
