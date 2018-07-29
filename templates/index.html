@@ -21,8 +21,7 @@
 </head>
 <body>
     <div id="flareon-container">
-        <div class="row">
-                
+        <div class="row">                
             <div class="col-sm-12">
                 <div class="flareon-title">
                     <b>Flareon</b> - Jekyll blog article editor
@@ -30,23 +29,50 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-8">
+            <div class="col-sm-8 no-padding">
                 <textarea id="Editor"></textarea>
             </div>
             <div class="col-sm-4">
                 <div class="metadata-holder">
-                    <div class="row">
-                        <div class="col-sm-12 metadata">
-                            <span class="attr">Title: </span>
-                            <input id="title-value" />
-                        </div>
-                        <div class="col-sm-12 metadata">
-                            <span class="attr">Date: </span>
-                            <input maxlength="4" id="year-value" />&nbsp;&nbsp;-&nbsp;&nbsp;
-                            <input maxlength="2" id="month-value" />&nbsp;&nbsp;-&nbsp;&nbsp;
-                            <input maxlength="2" id="day-value" />
-                            <span id="weekday-value"></span>
-                        </div>
+                    <div class="metadata">
+                        <span class="attr">Title: </span>
+                        <input id="title-value" />
+                    </div>
+                    <div class="metadata">
+                        <span class="attr">Date: </span>
+                        <input maxlength="4" id="year-value" />&nbsp;&nbsp;-&nbsp;&nbsp;
+                        <input maxlength="2" id="month-value" />&nbsp;&nbsp;-&nbsp;&nbsp;
+                        <input maxlength="2" id="day-value" />
+                        <span id="weekday-value"></span>
+                    </div>
+                    <div class="metadata">
+                        <span class="attr">Category: </span>
+                        <input id="Category-value" value="Draft" />
+                    </div>
+                    <div class="metadata">
+                        <span class="attr">Dropbox Media Sync ID: </span>
+                        <input id="media-sync-id" value="Temporary" readonly="true" />
+                    </div>
+                </div>
+                <div class="media-manager">
+                    <div class="title-area">
+                        <span class="attr">External Media:</span>
+                        <form id="media-upload" enctype="multipart/form-data">
+                            <input type="file" id="fileholder" name="file" />
+                        </form>
+                        <span id="total-filesize">0 Byte</span>
+                        <span id="total-filenum">(0 file)</span>
+
+                        <a href="#" id="add-media">
+                            <div class="add-media-btn-holder">
+                                <span class="add-media-btn">+</span>
+                            </div>
+                        </a>
+                    </div>
+                
+                    <div id="media-holder">
+                        <!-- Dynamically loaded media items -->
+                        
                     </div>
                 </div>
             </div>

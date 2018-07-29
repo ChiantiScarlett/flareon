@@ -1,6 +1,15 @@
 @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
 @import url('https://fonts.googleapis.com/css?family=Roboto|Play|Orbitron');
 
+img {
+    max-width: 100%;
+}
+
+a {
+    color: inherit !important;
+    text-decoration: inherit !important;
+}
+
 body {
     font-size: 16px;
     font-family: "Roboto", "Jeju Gothic";
@@ -63,4 +72,124 @@ input:focus {
 
 .metadata-holder #weekday-value {
     padding-left: 10px;
+}
+
+/* Media Manager */
+
+.media-manager {
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 16px;
+    color: #444;
+    min-height: 300px;
+}
+
+.media-manager .title-area {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.media-manager .title-area .attr{
+    font-weight: bold;
+    padding-right: 10px;
+}
+
+.media-manager #fileholder {
+    display: none;
+}
+
+.media-manager #add-media {
+    opacity: 0.5;
+}
+.media-manager #add-media:hover{
+    opacity: 0.8;
+}
+
+.media-manager .add-media-btn-holder {
+    opacity: inherit;
+    width: 100%;
+    height: 100px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #bbb;
+    text-align: center;
+    color: #bbb;
+    font-size: 80px;
+    line-height: 80px;
+}
+
+.media-manager #media-holder {
+    margin-top: 20px;
+    padding: 2px;
+}
+
+.media-manager .media {
+    width: 140px;
+    height: 140px;
+    display: inline-block;
+    margin: 2px;
+    position: relative;
+    border-radius: 5px;
+}
+
+.media-manager .media .close-btn {
+    position: absolute;
+    top: 4px;
+    left: 104px;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    background: #444;
+    color: #eee;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 30px;
+    z-index: 12;
+    -webkit-transition: background 0.5s; /* Safari */
+    transition: background 0.5s;
+}
+
+.media-manager .media .close-btn:hover {
+    background: #888;
+}
+
+.media-manager .media .img-holder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 140px;
+    height: 140px;
+    background: #ddd;
+    background-image: url('http://www.flashyweb.com.br/wp-content/themes/understrap/custom/img/sample.png');
+    background-size: cover;
+    object-fit: cover;
+    z-index: 10;
+    border-radius: inherit;
+}
+
+.media-manager .media .img-desc {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 140px;
+    height: 140px;
+    background: black;
+    color: #eee;
+    font-weight: bold;
+    z-index: 11;
+    opacity: 0;
+    -webkit-transition: opacity 0.5s; /* Safari */
+    transition: opacity 0.5s;
+    text-align: center;
+    font-size: 18px;
+    line-height: 140px;
+    border-radius: inherit;
+}
+
+.media-manager .media .img-desc:hover {
+    opacity: 0.5;
 }

@@ -1,0 +1,14 @@
+{% for item in media %}
+<div class="media" id="media-{{ item.local_id }}" onClick="remove_media('{{ item.local_id}}');">
+    <a href="#">
+    <div class="close-btn">-</div>
+    </a>
+    <a href="#">
+        <div class="img-holder" style="background-image: url('{{ item.url }}');">
+        </div>
+        <div class="img-desc">
+            Get Link
+        </div>
+    </a>
+</div>
+{% endfor %}
