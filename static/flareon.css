@@ -26,6 +26,11 @@ input:focus {
     border-bottom: 1px solid #bbb;
 }
 
+.CodeMirror-code {
+    color: #666;
+    font-size: 20px;
+}
+
 #flareon-container {
     padding: 20px;
 }

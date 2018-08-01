@@ -1,3 +1,5 @@
+var simplemde_editor;
+
 function update_weekday()
 {
     key = ["Sunday", "Monday", "Tuesday", "Wednesday",
@@ -33,6 +35,14 @@ function add_media()
 
 }
 
+function insert_media_link(filename, url)
+{
+    var media_id = "![" + filename + "](" + url + ")";
+    pos = simplemde_editor.codemirror.getCursor();
+    simplemde_editor.codemirror.setSelection(pos, pos);
+    simplemde_editor.codemirror.replaceSelection(media_id);
+}
+
 function remove_media(media_id)
 {
     $.ajax({
@@ -46,21 +56,29 @@ function remove_media(media_id)
     })
 }
 
+
 $(document).ready(function()
 {
-    var simplemde_editor = new SimpleMDE(
+    simplemde_editor = new SimpleMDE(
     {
-         element: $("#Editor")[0]
+         element: $("#Editor")[0],
+         spellChecker: false
     });
 
     update_weekday();
 
+    function insert_media_link(data)
+    {
+        alert("KK")
+    }
+
     /* Media Management */
     $("#add-media").click(function()
     {
-
         $("#fileholder").trigger("click");
     });
+
+
     $("#fileholder").change(function()
     {
         add_media();

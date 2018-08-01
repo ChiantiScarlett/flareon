@@ -9,7 +9,7 @@ from datetime import datetime
 
 # logging.basicConfig(level=logging.DEBUG)
 
-ACCESS_TOKEN = ""
+ACCESS_TOKEN = "wGKjt40wKZAAAAAAAAAAMgXgDiPToQi7fbPHlWX_qz9wvbFs5ctfUvltbisZsdsa"
 
 
 class FlareonMediaManager:
@@ -33,11 +33,6 @@ class FlareonMediaManager:
         return filesize
 
     def add_media(self, filename, fp):
-        """
-        Uplaod file to self._dropbox_path. Returns shared link.
-
-        """
-
         dropbox_path = self._dropbox_path + filename
         print("[*] Adding media <{}>...".format(filename))
 
