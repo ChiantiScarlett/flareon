@@ -1,0 +1,11 @@
+{% for file in files %}
+<a href="#">
+    <div class="explorer-file" onclick="load_md_file({{ file.index }})">
+        <div class="factor icon"><i class="fa fa-file"></i></div>
+        <div class="factor date">{{ file.date }}</div>
+        <div class="factor title">{{ file.title }}</div>
+        <div class="factor category">{{ file.category }}</div>
+        <div class="factor tags">{{ file.tags }}</div>
+    </div>
+</a>
+{% endfor %}

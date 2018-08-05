@@ -13,6 +13,11 @@
     <link rel="stylesheet" type="text/css" href="/static/bootstrap.min.css">
     <script type="text/javascript" src="/static/bootstrap.min.js"></script>
 
+    <!-- Font Awesome -->
+    <!-- <link rel="stylesheet" type="text/css" href="/static/font-awesome/css/fontawesome.min.css"> -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+
     <!-- Custom CSS and JS -->
     <link rel="stylesheet" type="text/css" href="/static/flareon.css">
     <script type="text/javascript" src="/static/flareon.js"></script>
@@ -20,60 +25,83 @@
 
 </head>
 <body>
-    <div id="flareon-container">
-        <div class="row">                
-            <div class="col-sm-12">
-                <div class="flareon-title">
-                    <b>Flareon</b> - Jekyll blog article editor
-                </div>
+    <!-- File Open Area -->
+    <div id="screen" onclick="close_explorer();"></div>
+    <div id="explorer-container">
+        <div>
+            <span class="attr">DirPath : </span>
+            <span class="desc">&lt;{{ explorer_path }}&gt;</span>
+        </div>
+        <div class="list">
+            <div class="header">
+                <div class="factor icon"></div>
+                <div class="factor date">Date</div>
+                <div class="factor title">Title</div>
+                <div class="factor category">Category</div>
+                <div class="factor tags">Tags</div>    
+            </div>
+
+            <div id="explorer-files">
+                <!-- file-list.html-->
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-8 no-padding">
-                <textarea id="Editor"></textarea>
-            </div>
-            <div class="col-sm-4">
-                <div class="metadata-holder">
-                    <div class="metadata">
-                        <span class="attr">Title: </span>
-                        <input id="title-value" />
-                    </div>
-                    <div class="metadata">
-                        <span class="attr">Date: </span>
-                        <input maxlength="4" id="year-value" />&nbsp;&nbsp;-&nbsp;&nbsp;
-                        <input maxlength="2" id="month-value" />&nbsp;&nbsp;-&nbsp;&nbsp;
-                        <input maxlength="2" id="day-value" />
-                        <span id="weekday-value"></span>
-                    </div>
-                    <div class="metadata">
-                        <span class="attr">Category: </span>
-                        <input id="Category-value" value="Draft" />
-                    </div>
-                    <div class="metadata">
-                        <span class="attr">Dropbox Media Sync ID: </span>
-                        <input id="media-sync-id" value="Temporary" readonly="true" />
-                    </div>
-                </div>
-                <div class="media-manager">
-                    <div class="title-area">
-                        <span class="attr">External Media:</span>
-                        <form id="media-upload" enctype="multipart/form-data">
-                            <input type="file" id="fileholder" name="file" />
-                        </form>
-                        <span id="total-filesize">0 Byte</span>
-                        <span id="total-filenum">(0 file)</span>
+    </div>
 
-                        <a href="#" id="add-media">
-                            <div class="add-media-btn-holder">
-                                <span class="add-media-btn">+</span>
-                            </div>
-                        </a>
-                    </div>
-                
-                    <div id="media-holder">
-                        <!-- Dynamically loaded media items -->
-                        
-                    </div>
+    <!-- Main Contents -->
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="header-container border-bottom">
+                <b>Flareon</b> - Jekyll Blog Markdown Editor
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="title-container border-around">
+                <span class="attr">Title : </span>
+                <input type="text" placeholder="Awesome Title" id="md-title" />
+
+                <button class="btn btn-info"><i class="fa fa-edit"></i>&nbsp;&nbsp;OPEN</button>
+                <button class="btn btn-success"><i class="fa fa-save"></i>&nbsp;&nbsp;SAVE</button>
+            </div>
+
+            <div class="editor-container">
+                <textarea id="Editor" style="display:none"></textarea>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="metadata-container border-around">
+                <div>
+                    <span class="attr">Filename : </span><input type="text" readonly="true" id="md-filename" />
+                </div>
+                <div>
+                    <span class="attr">Article Date : </span><input type="text" id="md-date" />
+                </div>
+                <div>
+                    <span class="attr">Category : </span><input type="text" id="md-category" />
+                </div>
+                <div>
+                    <span class="attr">Tags : </span><input type="text" id="md-tags" />
+                </div>
+            </div>
+
+            <div class="dbx-info-container border-around">
+                <div>
+                    <span class="attr">Dropbox Sync ID : </span>
+                    <input type="text" value="Temporary" readonly="true" id="md-dbx-sync-id" />
+                </div>
+                <div>
+                    <span class="attr">Folder Volume : </span>                    
+                    <input type="text" class="attr" id="dbx-filesinfo" value="17.32 MB (2 files)" readonly="true" />
+                </div>
+            </div>
+            <div class="dbx-container border-around">
+                <div>
+                    <span class="attr">Dropbox Contents </span>
+                </div>
+                <a href="#">
+                    <div class="dbx-add-btn border-around"> + </div>
+                </a>
+                <div id="dbx-files">
+                    <!-- dbx-list.html -->
                 </div>
             </div>
         </div>

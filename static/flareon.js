@@ -1,86 +1,99 @@
-var simplemde_editor;
+var EDITOR; /* Global variable for Editor */
+var EXPLORER_MODE = false; /* whether Explorer is open */
 
-function update_weekday()
+function open_explorer()
 {
-    key = ["Sunday", "Monday", "Tuesday", "Wednesday",
-           "Thursday", "Friday", "Saturday"];
-
-    date = new Date();
-    $('#year-value').val(date.getFullYear());
-    $('#month-value').val(date.getMonth()+1);
-    $('#day-value').val(date.getDate());
-    
-    $('#weekday-value').text("("+key[date.getDay()]+")");
-}
-
-function add_media()
-{
-    var form_data = new FormData($('#media-upload')[0]);
     $.ajax({
         type: "POST",
-        url: '/media/add',
-        data: form_data,
+        url: '/load/localfiles',
         contentType: false,
         cache: false,
         processData: false,
-        success: function(data)
+        success: function(HTML)
         {
-            $('#media-holder').html(data);
-        },
-        failure: function(e)
-        {
-            alert('failed');
+            $('#explorer-files').html(HTML);
         }
     });
 
+    $('#screen').css('display','inline');
+    $('#explorer-container').css('display','inline');
+    EXPLORER_MODE = true;
 }
 
-function insert_media_link(filename, url)
+function close_explorer()
 {
-    var media_id = "![" + filename + "](" + url + ")";
-    pos = simplemde_editor.codemirror.getCursor();
-    simplemde_editor.codemirror.setSelection(pos, pos);
-    simplemde_editor.codemirror.replaceSelection(media_id);
+    $('#screen').css('display', 'none');
+    $('#explorer-container').css('display', 'none');
+    EXPLORER_MODE = false;
 }
 
-function remove_media(media_id)
+function load_md_file(index)
 {
     $.ajax({
         type: "POST",
-        url: '/media/remove',
-        data: {"media_id":media_id},
-        success: function(data)
+        url: '/load/mdfile',
+        data: {index: index},
+        dataType: 'json',
+        cache: false,
+        success: function(response)
         {
-            $('#media-holder').html(data);
+            $('#md-title').val(response['title']);
+            $('#md-filename').val(response['filename']);
+            $('#md-date').val(response['date']);
+            $('#md-category').val(response['category']);
+            $('#md-tags').val(response['tags']);
+            $('#md-dbx-sync-id').val(response['dbx_sync_id']);
+
+            var pos = EDITOR.codemirror.getCursor();
+            EDITOR.codemirror.setSelection(pos, pos);
+            EDITOR.codemirror.replaceSelection(response['contents']);
+
+            var pos = EDITOR.codemirror.getCursor();
+            EDITOR.codemirror.setSelection(pos, pos);
+
+            /* Prevent lazy loading */
+            EDITOR.codemirror.replaceSelection('\n');
+               
         }
-    })
+    });
+
+    $('#screen').css('display','none');
+    $('#explorer-container').css('display','none');
+    EXPLORER_MODE = true;
 }
+
 
 
 $(document).ready(function()
 {
-    simplemde_editor = new SimpleMDE(
+    /* Initialize SimpleMDE Editor */
+    EDITOR = new SimpleMDE(
     {
          element: $("#Editor")[0],
-         spellChecker: false
+         spellChecker: false,
+         autoDownloadFontAwesome: false
     });
 
-    update_weekday();
-
-    function insert_media_link(data)
-    {
-        alert("KK")
-    }
-
-    /* Media Management */
-    $("#add-media").click(function()
-    {
-        $("#fileholder").trigger("click");
+    /* Hookup Ctrl+O , Ctrl+S to Open and Save respectively */
+    $(window).bind('keydown', function(event) {
+        if (event.ctrlKey || event.metaKey) {
+            switch (String.fromCharCode(event.which).toLowerCase()) {
+            case 's':
+                event.preventDefault();
+                alert('ctrl-s');
+                break;
+            case 'o':
+                event.preventDefault();
+                open_explorer();
+                break; 
+            }
+        }
     });
 
-
-    $("#fileholder").change(function()
-    {
-        add_media();
+    /* Close explorer when ESC is pressed. */
+    $(window).bind('keydown', function(event) {
+        if (event.keyCode == 27 && EXPLORER_MODE)
+            close_explorer();
     });
+
 });

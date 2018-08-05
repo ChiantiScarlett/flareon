@@ -13,11 +13,14 @@ a {
 body {
     font-size: 16px;
     font-family: "Roboto", "Jeju Gothic";
+    overflow-x: hidden;
 }
 
 input {
     border: 0px;
     border-bottom: 1px solid #ddd;
+    font-family: "Jeju Gothic";
+    color: #444;
 }
 
 input:focus {
@@ -26,175 +29,259 @@ input:focus {
     border-bottom: 1px solid #bbb;
 }
 
+.border-around {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #ddd !important;
+}
+
+span.attr {
+    font-size: 16px;
+    font-weight: bold;
+    font-family: "Orbitron";
+    color: #222;
+    letter-spacing: 1px;
+    margin-right: 20px;
+}
+
 .CodeMirror-code {
     color: #666;
-    font-size: 20px;
+    /*font-size: 20px;*/
 }
 
-#flareon-container {
-    padding: 20px;
-}
+/* Screen and Explorer Settings */
 
-.flareon-title {
-    font-size: 30px;
-    font-family: "Orbitron";
-    text-transform: capitalize;
-    text-align: center;
-    padding: 20px 0 50px 0;
-}
-
-.metadata-holder {
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 16px;
-    color: #444;
-}
-
-.metadata-holder .metadata {
-    margin-bottom: 10px;
-}
-
-.metadata-holder .attr {
-    font-weight: bold;
-    padding-right: 20px;
-}
-
-.metadata-holder #title-value {
-    width: 200px;
-}
-
-.metadata-holder #year-value {
-    width: 40px;
-}
-
-.metadata-holder #month-value {
-    width: 20px;
-}
-
-.metadata-holder #day-value {
-    width: 20px;
-}
-
-.metadata-holder #weekday-value {
-    padding-left: 10px;
-}
-
-/* Media Manager */
-
-.media-manager {
-    margin-top: 20px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 16px;
-    color: #444;
-    min-height: 300px;
-}
-
-.media-manager .title-area {
-    padding-bottom: 10px;
-    border-bottom: 1px solid #ddd;
-}
-
-.media-manager .title-area .attr{
-    font-weight: bold;
-    padding-right: 10px;
-}
-
-.media-manager #fileholder {
+#screen {
+    background: black;
+    opacity: 0.7;
+    z-index: 998;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
     display: none;
 }
 
-.media-manager #add-media {
-    opacity: 0.5;
-}
-.media-manager #add-media:hover{
-    opacity: 0.8;
-}
-
-.media-manager .add-media-btn-holder {
-    opacity: inherit;
-    width: 100%;
-    height: 100px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    padding: 10px;
+#explorer-container {
+    width: 800px;
+    height: 400px;
+    margin-left: -400px;
+    margin-top: -200px;
+    left: 50%;
+    top: 50%;
+    position: fixed;
+    background: white;
+    z-index: 999;
+    display: none;
     border-radius: 4px;
-    border: 1px solid #bbb;
-    text-align: center;
-    color: #bbb;
-    font-size: 80px;
-    line-height: 80px;
+    border: 1px solid #ddd;
+    padding: 20px;
 }
 
-.media-manager #media-holder {
+#explorer-container .desc {
+    font-size: 16px;
+    font-weight: bold;
+    color: #888;
+}
+
+#explorer-container .list .header {
+    font-family: "Orbitron";
+    font-weight: bold;
+    font-size: 14px;
+    border-bottom: 1px solid #ddd;
+}
+
+#explorer-container .list {
     margin-top: 20px;
-    padding: 2px;
+    height: 400px;
 }
 
-.media-manager .media {
-    width: 140px;
-    height: 140px;
+
+#explorer-container .list .factor {
     display: inline-block;
-    margin: 2px;
-    position: relative;
-    border-radius: 5px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
-.media-manager .media .close-btn {
-    position: absolute;
-    top: 4px;
-    left: 104px;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    background: #444;
-    color: #eee;
+#explorer-container .icon{
+    width: 20px;
+}
+
+#explorer-container .date{
+    width: 120px;
+}
+
+#explorer-container .title{
+    width: 220px;
+}
+
+#explorer-container .category{
+    width: 180px;
+}
+
+#explorer-container .tags{
+    width: 150px;
+}
+
+#explorer-container #explorer-files {
+    height: 300px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+#explorer-container .explorer-file{
+    color: #666 !important;
+    margin: 10px 0;
+}
+#explorer-container .explorer-file:hover {
+    color: #666 !important;
+    font-weight: bold;
+}
+
+
+
+.header-container {
+    font-size: 40px;
+    font-family: "Orbitron";
+    
+    text-align: center;
+    padding: 40px 0;
+}
+
+.title-container {
+    margin: 20px;
+    padding: 20px;
+}
+
+.title-container .attr {
+    font-size: 20px;
+}
+
+.title-container input {
+    font-size: 20px;
+    width: 500px;
+    margin-right: 20px;
+}
+
+.editor-container {
+    padding: 0 20px;
+}
+
+.metadata-container {
+    margin-top: 20px;
+    margin-left: -20px;
+    margin-right: 20px;
+    padding: 20px;
+}
+
+.metadata-container span {
+    display: inline-block;
+    width: 130px;
+    font-size: 16px;
+    padding-top: 4px;
+}
+
+.metadata-container div {
+    margin-bottom: 10px;
+}
+
+.metadata-container input {
+    font-size: 16px;
+    width: 220px;
+}
+
+.dbx-info-container {
+    margin-top: 20px;
+    margin-left: -20px;
+    margin-right: 20px;
+    padding: 20px;
+}
+
+.dbx-info-container .status {
+    font-family: "Orbitron";
+    color: #666;
+    font-weight: bold;
+    font-size: 14px;
+    padding-top: 10px;
+}
+
+.dbx-info-container span {
+    float: left;
+    width: 180px;
+    padding-top: 4px;
+    font-size: 16px;
+}
+
+.dbx-info-container div {
+    margin-bottom: 10px;
+}
+
+.dbx-info-container input {
+    width: 170px;
+}
+
+.dbx-container {
+    margin-top: 20px;
+    margin-left: -20px;
+    margin-right: 20px;
+    padding: 20px;
+}
+
+.dbx-container .dbx-add-btn {
     font-size: 30px;
     font-weight: bold;
+    color: #ccc;
+    border-color: #ccc;
     text-align: center;
-    line-height: 30px;
-    z-index: 12;
-    -webkit-transition: background 0.5s; /* Safari */
-    transition: background 0.5s;
+    padding: 0px;
+    margin: 20px 0;
+    opacity: 0.7;
 }
 
-.media-manager .media .close-btn:hover {
-    background: #888;
+.dbx-container .dbx-add-btn:hover {
+    opacity: 1.0;
+    background: #acdbc9;
+    color: white;
 }
 
-.media-manager .media .img-holder {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 140px;
-    height: 140px;
-    background: #ddd;
-    background-image: url('http://www.flashyweb.com.br/wp-content/themes/understrap/custom/img/sample.png');
-    background-size: cover;
-    object-fit: cover;
-    z-index: 10;
-    border-radius: inherit;
+.dbx-container #dbx-files {
+    /*overflow-y: scroll;
+    height: 150px;*/
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
 }
 
-.media-manager .media .img-desc {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 140px;
-    height: 140px;
-    background: black;
-    color: #eee;
+.dbx-container .dbx-file {
+    position: relative;
+    width: 100%;
+    padding: 4px;
+    overflow: hidden;
+}
+
+.dbx-file .filedata:hover {
     font-weight: bold;
-    z-index: 11;
-    opacity: 0;
-    -webkit-transition: opacity 0.5s; /* Safari */
-    transition: opacity 0.5s;
-    text-align: center;
-    font-size: 18px;
-    line-height: 140px;
-    border-radius: inherit;
 }
 
-.media-manager .media .img-desc:hover {
-    opacity: 0.5;
+.dbx-container .dbx-file .fa {
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.dbx-container .dbx-file .filesize {
+    margin-right: 10px;
+}
+
+.dbx-container .dbx-file .filename {
+}
+
+.dbx-container .dbx-file .remove-btn {
+    position: absolute;
+    right: 0;
+}
+
+.dbx-container .dbx-file .remove-btn:hover {
+    color: #cc527a;
 }
