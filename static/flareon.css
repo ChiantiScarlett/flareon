@@ -193,6 +193,17 @@ span.attr {
     width: 220px;
 }
 
+.metadata-container #md-date {
+    width: 120px;
+}
+
+.metadata-container #md-date-wd {
+    width: 100px;
+    border: 0px solid #ddd;
+    font-size: 16px;
+    font-family: "Jeju Gothic";
+}
+
 .dbx-info-container {
     margin-top: 20px;
     margin-left: -20px;

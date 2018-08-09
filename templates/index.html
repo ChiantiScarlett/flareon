@@ -15,7 +15,9 @@
 
     <!-- Font Awesome -->
     <!-- <link rel="stylesheet" type="text/css" href="/static/font-awesome/css/fontawesome.min.css"> -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+
 
 
     <!-- Custom CSS and JS -->
@@ -59,8 +61,8 @@
                 <span class="attr">Title : </span>
                 <input type="text" placeholder="Awesome Title" id="md-title" />
 
-                <button class="btn btn-info"><i class="fa fa-edit"></i>&nbsp;&nbsp;OPEN</button>
-                <button class="btn btn-success"><i class="fa fa-save"></i>&nbsp;&nbsp;SAVE</button>
+                <button class="btn btn-info" onclick="open_explorer();"><i class="fa fa-edit"></i>&nbsp;&nbsp;OPEN</button>
+                <button class="btn btn-success" onclick="save_md_file();"><i class="fa fa-save"></i>&nbsp;&nbsp;SAVE</button>
             </div>
 
             <div class="editor-container">
@@ -69,14 +71,20 @@
         </div>
         <div class="col-sm-4">
             <div class="metadata-container border-around">
+                <!-- Hidden dbx-file-upload : file type input -->
+                <form id="dbx-file-upload-form" enctype="multipart/form-data">
+                    <input type="file" name="file" id="dbx-file-upload" style="display: none" onchange="add_dbx_file()" />
+                </form>
                 <div>
-                    <span class="attr">Filename : </span><input type="text" readonly="true" id="md-filename" />
+                    <span class="attr">Filename : </span><input type="text" readonly="true" id="md-filename" value="./local_draft.flareon.md" />
                 </div>
                 <div>
-                    <span class="attr">Article Date : </span><input type="text" id="md-date" />
+                    <span class="attr">Article Date : </span>
+                    <input onchange="validate_date()" type="text" id="md-date" value="{{ default_date }}"/>
+                    <span id="md-date-wd">{{ default_date_wd }}</span>
                 </div>
                 <div>
-                    <span class="attr">Category : </span><input type="text" id="md-category" />
+                    <span class="attr">Category : </span><input type="text" id="md-category" value="Draft"/>
                 </div>
                 <div>
                     <span class="attr">Tags : </span><input type="text" id="md-tags" />
@@ -86,18 +94,18 @@
             <div class="dbx-info-container border-around">
                 <div>
                     <span class="attr">Dropbox Sync ID : </span>
-                    <input type="text" value="Temporary" readonly="true" id="md-dbx-sync-id" />
+                    <input type="text" value="{{ tmp_dir }}" readonly="true" id="md-dbx-sync-id" />
                 </div>
                 <div>
                     <span class="attr">Folder Volume : </span>                    
-                    <input type="text" class="attr" id="dbx-filesinfo" value="17.32 MB (2 files)" readonly="true" />
+                    <input type="text" class="attr" id="dbx-filesinfo" value="0.00 Byte (0 file)" readonly="true" />
                 </div>
             </div>
             <div class="dbx-container border-around">
                 <div>
                     <span class="attr">Dropbox Contents </span>
                 </div>
-                <a href="#">
+                <a href="#" onclick="$('#dbx-file-upload').trigger('click');">
                     <div class="dbx-add-btn border-around"> + </div>
                 </a>
                 <div id="dbx-files">

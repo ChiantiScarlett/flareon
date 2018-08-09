@@ -1,12 +1,12 @@
 {% for file in files %}
 <div class="dbx-file">
-    <a href="#" class="filedata">
+    <a href="#" class="filedata" onclick="create_dbx_file_link('{{ file.name }}');">
         <span><i class="fa {{ file.icon }}"></i></span>
         <span class="filesize">{{ file.size }}</span>
         <span class="filename">{{ file.name }}</span>
     </a>
     <a href="#">
-    <span class="remove-btn"><i class="fa fa-close"></i></span>
+    <span class="remove-btn" onclick="remove_dbx_file('{{ file.name }}');"><i class="fa fa-window-close"></i></span>
     </a>
 </div>
 {% endfor %}

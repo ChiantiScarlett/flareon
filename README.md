@@ -1,2 +1,0 @@
-# booster
-jekyll blog editor
